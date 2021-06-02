@@ -1,0 +1,36 @@
+@scene scene01      自定义参数1 自定义参数2 自定义参数3 等等等
+@actor 你           自定义参数1 自定义参数2 自定义参数3 等等等
+@actor 角色A        自定义参数1 自定义参数2 自定义参数3 等等等
+
+@main
+[[这是一句旁白]] --arg1 --arg2=10 --arg3=对话后面可以随便加参数
+角色A : [[你好呀]]
+你 : [[我想插入一行代码]]
+> print("hello world")
+> print("再打印下血量", playerState.hp)
+角色B : [[来做个选择吧]]
+<1> [[加血]] ? >playerState.hp = playerState.hp + 10
+<2> [[跳到下一段]] ? ->第二段
+<3> [[啥也不干]] ?
+> print("现在的血量", playerState.hp)
+你:[[还是去下一段吧]]
+-> 第二段
+@end
+
+@section 第二段
+[[来到了第二段]]
+[[来看看条件怎么用]]
+IF(playerState.hp < 10) [[你的血量太低了]] ELSE >playerState.level = playerState.level + 1
+IF(playerState.level > 1) [[恭喜你升级了]]
+@end
+
+@trigger 事件1
+[[事件1 被触发了]]
+@end
+
+@trigger 事件2
+[[事件2 被触发了]]
+[[试试跳转到别的文件]]
+你: [[走你]]
+=> stories/story2.avg
+@end

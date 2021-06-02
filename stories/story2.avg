@@ -1,0 +1,8 @@
+@scene scene02
+@actor 你
+
+@main
+[[安全着陆]]
+[[差不多洗洗睡了]]
+> game:Exit()
+@end
